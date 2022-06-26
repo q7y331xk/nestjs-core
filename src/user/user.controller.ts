@@ -21,6 +21,9 @@ import { Role } from 'src/types/role.type'
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+
+
+
   @Post()
   signUp(@Body() createUserDto: CreateUserDto): DefaultPromiseResponse {
     return this.userService.signUp(createUserDto);
@@ -39,7 +42,7 @@ export class UserController {
   @Delete('me')
   @UseGuards(AuthGuard(Role.Admin))
   async removeMe(@Token() user: TokenUser) {
-    return 'test'
+    return user
     // return this.userService.removeMe(user);
   }
 }

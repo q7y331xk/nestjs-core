@@ -10,7 +10,6 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { catchHandler } from 'src/shared/throw-error-in-catch';
-import { PwCode } from './entities/pw-code.entity';
 import { AuthService } from 'src/auth/auth.service';
 import { getSalt, passswordEncrypt } from './funcs/pw-hash';
 import { odenSignIn } from './funcs/sign-in';
@@ -20,8 +19,6 @@ export class UserService {
   constructor(
     @InjectRepository(User)
     private userRepository: Repository<User>,
-    @InjectRepository(PwCode)
-    private readonly pwCodesRepository: Repository<PwCode>,
     private readonly authService: AuthService,
   ) {}
 

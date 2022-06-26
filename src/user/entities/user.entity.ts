@@ -12,6 +12,9 @@ export class User extends Core {
   @Length(8, 20)
   @Column()
   password: string;
+  
+  @Column({ unsigned: true, default: () => 0 })
+  passwordVersion: number;
 
   @Length(2, 15)
   @Column()
@@ -31,9 +34,6 @@ export class User extends Core {
 
   @Column({ length: 100, nullable: true })
   salt: string;
-
-  @Column({ unsigned: true, default: () => 0 })
-  passwordVersion: number;
 
   @Column({ default: () => 0 })
   removed: number;

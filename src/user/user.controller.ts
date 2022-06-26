@@ -14,6 +14,8 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { SignInUserDto } from './dto/sign-in-user.dto';
 import { Token } from 'src/shared/user.decorator';
 import { TokenUser } from 'src/types/shared.type';
+import { Role } from 'src/types/role.type'
+
 
 @Controller('user')
 export class UserController {
@@ -35,8 +37,9 @@ export class UserController {
   }
 
   @Delete('me')
-  @UseGuards(AuthGuard)
+  @UseGuards(AuthGuard(Role.Admin))
   async removeMe(@Token() user: TokenUser) {
-    return this.userService.removeMe(user);
+    return 'test'
+    // return this.userService.removeMe(user);
   }
 }
